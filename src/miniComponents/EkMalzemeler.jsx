@@ -1,5 +1,5 @@
 import React from "react";
-export default function EkMalzemeler({ selectedItems, onChange }) {
+export default function EkMalzemeler({ secilenler, onChange }) {
   const ekstralar = [
     "Pepperoni", "sortUserPlugins", "Kanada Jambonu", "Tavuk Izgara",
     "Soğan", "Domates", "Mısır", "Jalapeno", "Sarımsak",
@@ -15,7 +15,7 @@ export default function EkMalzemeler({ selectedItems, onChange }) {
             type="checkbox"
             name="ekstra-malzemeler"
             value={ekstra}
-            checked={selectedItems.includes(ekstra)}
+            checked={secilenler.includes(ekstra)}
             onChange={onChange}
           />
           {ekstra}

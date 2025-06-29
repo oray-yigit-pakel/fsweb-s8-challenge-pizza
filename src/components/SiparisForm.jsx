@@ -5,6 +5,7 @@ import PizzaBoyutu from "../miniComponents/PizzaBoyutu";
 import EkMalzemeler from "../miniComponents/EkMalzemeler";
 import PizzaKenar from "../miniComponents/PizzaKenar";
 import Footer from "../miniComponents/Footer";
+import SiparisVer from "../miniComponents/SiparisVer";
 
 export default function SiparisForm() {
   /* const bosPizza = {
@@ -16,6 +17,28 @@ export default function SiparisForm() {
   const [pizza, setPizza] = useState(bosPizza);
   const [fiyat, setFiyat] = useState(0);
 */
+  const secilenMalzemeler = [
+    "Soğan",
+    "Domates",
+    "Mısır",
+    "Jalapeno",
+    "Sarımsak",
+    "Biber",
+    "Sucuk",
+  ];
+  function azalt() {
+    console.log("merhaba");
+  }
+  function arttir() {
+    console.log("merhaba");
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log("merhaba");
+  }
+  function handleChange() {
+    console.log("merhaba");
+  }
   return (
     <>
       <header className="orderheader">
@@ -55,18 +78,21 @@ export default function SiparisForm() {
             Boyut Seç<span>*</span>
           </h1>
           <div>
-            <PizzaBoyutu />
+            <PizzaBoyutu onChange={handleChange} />
           </div>
         </div>
         <div>
-          <PizzaKenar />
+          <PizzaKenar onChange={handleChange} />
         </div>
       </div>
       <div>
         <h3>Ek malzemeler</h3>
         <p>En fazla 10 Malzeme seçebilirsiniz. 5₺</p>
         <div>
-          <EkMalzemeler />
+          <EkMalzemeler
+            secilenler={secilenMalzemeler}
+            onChange={handleChange}
+          />
         </div>
       </div>
       <form>
@@ -80,7 +106,7 @@ export default function SiparisForm() {
       <div>
         <div>
           <button onClick={azalt}>-</button>
-          <span>{adet}</span>
+          <span>1</span>
           <button onClick={arttir}>+</button>
         </div>
         <SiparisVer onSubmit={handleSubmit} />

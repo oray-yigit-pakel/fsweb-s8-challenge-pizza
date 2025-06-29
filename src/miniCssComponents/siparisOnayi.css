@@ -1,0 +1,78 @@
+#onay-header-container {
+  background-color: #ce2829;
+  color: white;
+  text-align: center;
+  display: flexbox;
+}
+#onay-title-h1 {
+  font-family: "Londrina Solid", sans-serif;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 50px;
+  letter-spacing: 0;
+  text-align: center;
+  vertical-align: middle;
+  text-transform: capitalize;
+  padding: 30px;
+}
+
+#onay-italik-yazi {
+  font-family: "Satisfy", cursive;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 44.27px;
+  letter-spacing: 0;
+  text-align: center; /* Yatay ortalama */
+  vertical-align: middle;
+  color: #fdc913;
+  padding-top: 30px;
+}
+#onay-yazisi {
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 300;
+  font-size: 86px;
+  line-height: 92px;
+  letter-spacing: 1.5px;
+  text-align: center;
+  vertical-align: middle;
+  padding-bottom: 50px;
+  border-bottom: 1px solid white;
+  display: inline-block;
+}
+#absolute-yazi {
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 29.44px;
+  letter-spacing: 0;
+  text-align: center;
+  vertical-align: middle;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+.siparis-özeti-container {
+  font-family: "Barlow", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24.76px;
+  vertical-align: middle;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.onay-span-bold {
+  font-weight: 400;
+}
+.siparis-fiyat-container {
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24.76px;
+  letter-spacing: 0;
+  vertical-align: middle;
+  border: 2px solid white;
+  padding: 40px;
+  display: inline-block;
+  margin-bottom: 100px;
+}
