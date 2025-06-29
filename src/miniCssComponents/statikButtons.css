@@ -1,0 +1,49 @@
+.statik-button-group-container {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  background-color: #faf7f2;
+  padding: 20px;
+}
+
+.statik-button-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  border-radius: 50px;
+  background-color: #ffffff;
+  padding: 12px 20px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  height: 66px;
+}
+
+.statik-button-item:hover {
+  background-color: black;
+  color: #ffffff;
+}
+
+.statik-button-icon {
+  width: 36px;
+  height: 36px;
+}
+
+.statik-button-text {
+  min-width: 20px;
+  min-height: 31px;
+  font-family: "Barlow", sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 32.4px;
+  letter-spacing: 0;
+  text-align: center; 
+  vertical-align: middle; 
+  display: flex; 
+  justify-content: flex-start;
+  align-items: center;
+}
+

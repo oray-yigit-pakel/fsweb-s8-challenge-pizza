@@ -1,0 +1,72 @@
+.footercontainer {
+  width: 100%;
+  background-color: black;
+  color: white;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 20px;
+}
+#footer-logo {
+  max-width: 251px;
+  max-height: 100px;
+  margin-bottom: 50px;
+}
+.footer-mini-icons {
+  padding-top: 30px;
+  margin-left: 30px;
+}
+#footer-main {
+  display: flex;
+  flex-direction: row;
+  margin-left: 100px;
+  max-width: 1066px;
+  justify-content: center;
+  align-items: center;
+}
+.adres-section {
+  display: flex;
+  flex-direction: column;
+  padding-right: 40px;
+}
+#footer-main {
+  display: flex;
+  flex-direction: row;
+}
+#hot-menu-section {
+  display: flex;
+  flex-direction: column;
+  padding-right: 140px;
+  margin-top: 60px;
+}
+#instagram-section {
+}
+#instagram-foto-section {
+  display: flexbox;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 347px;
+  margin-top: 50px;
+  padding: 10px;
+}
+.footer-p {
+  font-family: "Barlow", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 32.4px;
+  letter-spacing: 0;
+  vertical-align: middle;
+}
+.footer-h2 {
+  font-family: "Barlow", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32.11px;
+  letter-spacing: 0;
+  vertical-align: middle;
+  margin-top: 60px;
+}
+.copyright-container {
+  border-top: 1px solid grey;
+}

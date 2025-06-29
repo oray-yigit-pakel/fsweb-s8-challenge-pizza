@@ -1,125 +1,29 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import "../miniCssComponents/NavigationMenu.css";
 
 function NavigationMenu() {
+  const navItems = [
+    "YENİ! Kore",
+    "Pizza",
+    "Burger",
+    "Kızartmalar",
+    "Fast food",
+    "Gazlı içecek",
+  ];
+
   return (
-    <nav
-      style={{
-        display: "flex",
-        gap: "25px",
-        alignItems: "center",
-        backgroundColor: "#FFFFFF",
-        width: "1920",
-        justifyContent: "center",
-      }}
-    >
-      <NavLink
-        to="/anasayfa"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "10px",
-          textDecoration: "none",
-          color: "black",
-        }}
-      >
-        <img
-          src="images/iteration-2-images/icons/1.svg"
-          alt="YENİ! Kore"
-          style={{ width: 40, height: 40 }}
-        />
-        <span>YENİ! Kore</span>
-      </NavLink>
-
-      <NavLink
-        to="/anasayfa"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "10px",
-          textDecoration: "none",
-          color: "black",
-        }}
-      >
-        <img
-          src="images/iteration-2-images/icons/2.svg"
-          alt="Pizza"
-          style={{ width: 40, height: 40 }}
-        />
-        <span>Pizza</span>
-      </NavLink>
-
-      <NavLink
-        to="/anasayfa"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "10px",
-          textDecoration: "none",
-          color: "black",
-        }}
-      >
-        <img
-          src="images/iteration-2-images/icons/3.svg"
-          alt="Burger"
-          style={{ width: 40, height: 40 }}
-        />
-        <span>Burger</span>
-      </NavLink>
-
-      <NavLink
-        to="/anasayfa"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "10px",
-          textDecoration: "none",
-          color: "black",
-        }}
-      >
-        <img
-          src="images/iteration-2-images/icons/4.svg"
-          alt="Kızartmalar"
-          style={{ width: 40, height: 40 }}
-        />
-        <span>Kızartmalar</span>
-      </NavLink>
-
-      <NavLink
-        to="/anasayfa"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "10px",
-          textDecoration: "none",
-          color: "black",
-        }}
-      >
-        <img
-          src="images/iteration-2-images/icons/5.svg"
-          alt="Fast food"
-          style={{ width: 40, height: 40 }}
-        />
-        <span>Fast food</span>
-      </NavLink>
-
-      <NavLink
-        to="/anasayfa"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "10px",
-          textDecoration: "none",
-          color: "black",
-        }}
-      >
-        <img
-          src="images/iteration-2-images/icons/6.svg"
-          alt="Gazlı içecek"
-          style={{ width: 40, height: 40 }}
-        />
-        <span>Gazlı içecek</span>
-      </NavLink>
+    <nav className="ana-nav-container">
+      {navItems.map((text, index) => (
+        <NavLink key={index} to="/anasayfa" className="ana-nav-link">
+          <img
+            src={`images/iteration-2-images/icons/${index + 1}.svg`}
+            alt={text}
+            className="ana-nav-icon"
+          />
+          <span className="ana-nav-text">{text}</span>
+        </NavLink>
+      ))}
     </nav>
   );
 }

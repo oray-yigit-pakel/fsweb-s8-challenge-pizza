@@ -1,0 +1,38 @@
+.ana-nav-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  width: 100%;
+  padding: 26px 0;
+  height: 94px;
+}
+
+.ana-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: black;
+  transition: transform 0.2s ease;
+}
+
+.ana-nav-link:hover {
+  transform: scale(1.05);
+}
+
+.ana-nav-icon {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.ana-nav-text {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 32.4px;
+  letter-spacing: 0;
+  vertical-align: middle;
+}

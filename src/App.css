@@ -5,6 +5,295 @@
 }
 
 .anasayfa-header-container {
-  width: 1920px;
-  height: 1080px;
+  width: 100%; /* Ekran genişliğini kapla */
+  aspect-ratio: 16 / 9; /* 1920x1080 oranı */
+  background-image: url("images/iteration-1-images/home-banner.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  color: white;
 }
+
+#anasayfa-h1 {
+  font-family: "Londrina Solid", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 50px;
+  letter-spacing: 0;
+  text-align: center;
+  text-transform: capitalize; /* Title Case */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+#anasayfa-firsat {
+  font-family: "Satisfy", cursive;
+  color: #fdc913;
+  font-weight: 100;
+  margin: 0;
+  padding: 0;
+  line-height: 1.1;
+  margin-top: 20px;
+}
+.anasayfa-p {
+  font-family: "Barlow", sans-serif;
+  font-weight: 200;
+  font-size: 50px;
+  margin: 0;
+  padding: 0;
+  line-height: 1.1;
+  margin-bottom: 3px;
+}
+.anasayfa-aciktim-button {
+  background-color: #fdc913;
+  border-radius: 40px;
+  font-size: 16px;
+  padding: 10px 45px 10px 45px;
+  border: none;
+  margin-top: 5px;
+}
+.anasayfa-aciktim-button:hover {
+  background-color: darkblue;
+  color: yellow;
+}
+.anasayfa-main-1 {
+  display: flex;
+  gap: 1px;
+  background-color: #faf7f2;
+  justify-content: center; /* yatayda ortalar */
+  align-items: center;
+  flex-wrap: wrap;
+}
+.anasayfa-resimler-container {
+  max-width: 1080px;
+  display: flex;
+  margin-top: 50px;
+}
+.anasayfa-section1-resimler-1 {
+  width: 531px;
+  height: 448.75px; /* buna dokunmuyoruz */
+  background-image: url("images/iteration-2-images/cta/kart-1.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start; /* isteğe göre center da olabilir */
+  padding: 20px; /* içerik biraz içeri çekilir */
+  overflow: hidden; /* taşma kontrolü (gerekirse auto yaparsın) */
+  border-radius: 16px;
+}
+.ozel {
+  font-family: Quattrocento;
+  color: white;
+  font-weight: 700;
+  font-size: 68px;
+  line-height: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  letter-spacing: 0;
+}
+.lezzetus {
+  font-family: Quattrocento;
+  color: white;
+  font-weight: 700;
+  font-size: 68px;
+  line-height: 10px;
+  letter-spacing: 0;
+  padding: 20px;
+  margin-top: 50px;
+  letter-spacing: 0;
+}
+#acı-burger {
+  font-family: Barlow;
+  color: white;
+  padding: 20px;
+}
+#anasayfa-lezzetus-siparisver-butonu {
+  margin-left: 100px;
+  background-color: white;
+  border-radius: 40px;
+  font-size: 14px;
+  padding: 10px 40px 10px 40px;
+  border: none;
+  margin-top: 5px;
+  color: red;
+  font-weight: 600;
+  font-family: barlow;
+}
+#anasayfa-lezzetus-siparisver-butonu:hover {
+  background-color: darkblue;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  transform: scale(1.03);
+  color: yellow;
+}
+.anasayfa-section2-resimler {
+  width: 530px;
+  height: 449px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+#anasayfa-hackathlon {
+  width: 530px;
+  height: 220px; 
+  background-image: url("images/iteration-2-images/cta/kart-2.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start; 
+  padding: 20px; 
+  border-radius: 16px;
+}
+
+#hackathlon-p {
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+  letter-spacing: 0;
+  vertical-align: middle;
+  color: white;
+  margin-left: 20px;
+}
+#hackathlon-p2 {
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+  letter-spacing: 0;
+  vertical-align: middle;
+  color: white;
+  margin-left: 20px;
+}
+#anasayfa-hackathlon-siparisver-butonu {
+  margin-left: 20px;
+  background-color: white;
+  border-radius: 40px;
+  font-size: 14px;
+  padding: 10px 40px 10px 40px;
+  border: none;
+  color: red;
+  font-weight: 600;
+  font-family: barlow;
+}
+#anasayfa-hackathlon-siparisver-butonu:hover {
+  background-color: darkblue;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  transform: scale(1.03);
+  color: yellow;
+}
+#anasayfa-npm-kurye {
+  width: 530px;
+  height: 220px;
+  background-image: url("images/iteration-2-images/cta/kart-3.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border-radius: 16px;
+}
+#npm-p {
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 44.27px;
+  letter-spacing: 0;
+  vertical-align: middle;
+}
+#npm-p2 {
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 44.27px;
+  letter-spacing: 0;
+  vertical-align: middle;
+  margin-left: 30px;
+}
+#anasayfa-npm-siparisver-butonu {
+  margin-left: 20px;
+  background-color: white;
+  border-radius: 40px;
+  font-size: 14px;
+  padding: 10px 40px 10px 40px;
+  border: none;
+  color: red;
+  font-weight: 600;
+  font-family: barlow;
+}
+#anasayfa-npm-siparisver-butonu:hover {
+  background-color: darkblue;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  transform: scale(1.03);
+  color: yellow;
+}
+#anasayfa-pson {
+  font-family: "Satisfy", cursive;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 44.27px;
+  letter-spacing: 0;
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 40px;
+  color: #ce2829;
+  background-color: #faf7f2;
+  margin: 0;
+}
+#anasayfa-pson2 {
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  font-size: 42px;
+  line-height: 56.2px;
+  letter-spacing: 0;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #faf7f2;
+  margin: 0;
+  padding-bottom: 16px;
+}
+.reklam-aside {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #faf7f2;
+  gap: 20px;
+}
+.anasayfa-aside-div {
+  max-width: 1068px;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+.anasayfa-aside-p1 {
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 29.44px;
+  letter-spacing: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.anasayfa-aside-p2 {
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28.8px;
+  letter-spacing: 0;
+  display: flex;
+  align-items: center;
+}
+
