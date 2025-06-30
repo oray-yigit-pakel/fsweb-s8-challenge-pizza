@@ -88,10 +88,15 @@ export default function SiparisForm() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+
     if (!validateForm()) {
       console.log("Formda hatalar var");
       return;
     }
+
+    const baseFiyat = 85.5;
+    const ekstraMalzemeFiyati = pizza.ekstraMalzemeler.length * 5;
+    const toplamFiyat = (baseFiyat + ekstraMalzemeFiyati) * pizza.adet;
 
     const siparisVerisi = {
       isim: pizza.isim,
@@ -100,7 +105,8 @@ export default function SiparisForm() {
       ekstraMalzemeler: pizza.ekstraMalzemeler,
       adet: pizza.adet,
       siparisNotu: pizza.siparisNotu,
-      toplamFiyat: fiyat.toFixed(2),
+      toplamFiyat: toplamFiyat.toFixed(2),
+      ekstraMalzemeFiyati: ekstraMalzemeFiyati.toFixed(2),
     };
 
     try {
@@ -115,8 +121,7 @@ export default function SiparisForm() {
       );
 
       console.log("API'den gelen yanıt:", response.data);
-      history.push("/siparisonayi");
-      alert("Siparişiniz başarıyla alındı!");
+      history.push("/siparisonayi", { siparis: siparisVerisi });
     } catch (error) {
       console.error("API isteğinde hata oluştu:", error);
       alert("Sipariş gönderilemedi, lütfen tekrar deneyin.");
