@@ -1,15 +1,29 @@
 import React from "react";
 export default function EkMalzemeler({ secilenler, onChange }) {
   const ekstralar = [
-    "Pepperoni", "sortUserPlugins", "Kanada Jambonu", "Tavuk Izgara",
-    "Soğan", "Domates", "Mısır", "Jalapeno", "Sarımsak",
-    "Biber", "Sucuk", "Ananas", "Kabak"
+    "Pepperoni",
+    "Sosis",
+    "Kanada Jambonu",
+    "Tavuk Izgara",
+    "Soğan",
+    "Domates",
+    "Mısır",
+    "Jalapeno",
+    "Sarımsak",
+    "Biber",
+    "Sucuk",
+    "Ananas",
+    "Kabak",
   ];
 
   return (
-    <div>
+    <div className="ekmalzeme-grid">
       {ekstralar.map((ekstra, index) => (
-        <label key={index} htmlFor={`ekstra-${index}`} className="checkbox-label">
+        <label
+          key={index}
+          htmlFor={`ekstra-${index}`}
+          className="checkbox-label"
+        >
           <input
             id={`ekstra-${index}`}
             type="checkbox"
@@ -18,6 +32,7 @@ export default function EkMalzemeler({ secilenler, onChange }) {
             checked={secilenler.includes(ekstra)}
             onChange={onChange}
           />
+          <span className="custom-checkbox"></span>
           {ekstra}
         </label>
       ))}

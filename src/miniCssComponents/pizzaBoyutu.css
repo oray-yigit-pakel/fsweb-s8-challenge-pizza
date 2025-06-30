@@ -1,0 +1,49 @@
+.radio-group {
+  display: flex;
+  gap: 12px;
+}
+
+.custom-radio {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background-color: #faf7f2; /* Sarı */
+  border-radius: 30px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: bold;
+  color: #333;
+  user-select: none;
+
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.custom-radio input {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer; /* Önemli: görünmez input yine de tıklanabilir olmalı */
+  top: 0;
+  left: 0;
+  margin: 0;
+  z-index: 2;
+  background-color: #f5f1e9;
+}
+
+.custom-radio.selected {
+  background-color: #eaba5a; /* Açık bej */
+}
+
+.custom-radio:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.radio-label {
+  pointer-events: none; /* Yazının tıklanabilir olması engellenir, label tıklanır */
+  font-size: 18px;
+}

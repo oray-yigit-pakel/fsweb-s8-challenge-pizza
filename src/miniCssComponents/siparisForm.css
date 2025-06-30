@@ -1,0 +1,289 @@
+.order-header {
+  background-color: #ce2829;
+  color: white;
+  font-family: "Londrina Solid", sans-serif;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 50px;
+  letter-spacing: 0;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: capitalize;
+  height: 100px;
+}
+
+.order-banner-container {
+  letter-spacing: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #faf7f2;
+}
+
+#order-banner-img {
+  padding-bottom: 50px;
+}
+
+#order-nav-container {
+  text-align: left;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  gap: 10px;
+}
+#order-nav-container a {
+  margin: 4px 0;
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: left;
+  padding-bottom: 30px;
+}
+#order-reklam-section p,
+#order-reklam-section span {
+  text-align: left;
+}
+
+#order-banner-h2 {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+  font-size: 40px;
+  padding-bottom: 30px;
+}
+
+#order-reklam-section {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+#order-reklam-section p {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  text-align: left;
+}
+
+#order-reklam-article {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  text-align: left;
+  font-size: 16px;
+  line-height: 1.5;
+  line-height: 28.8px;
+  font-weight: 400;
+}
+
+#order-secenekler {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 10px;
+  box-sizing: border-box;
+  gap: 16px;
+}
+#order-boyut-section {
+  flex: 0 1 50%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+#boyut-buton-div {
+  display: flex;
+  gap: 12px;
+}
+#order-hamursec-div {
+  flex: 0 1 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  text-align: left;
+}
+
+#order-hamursec-div label,
+#order-hamursec-div select {
+  width: 100%;
+}
+#order-ekmalzemeler-container {
+  flex: 0 1 50%; /* Her biri maksimum %50 alan alsın ama taşmasın diye bunu hocaaya sor tam oturmadı*/
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  text-align: left;
+  max-width: 600px;
+}
+#kenartipleri {
+  background-color: #faf7f2;
+  font-weight: bold;
+  border: none;
+  padding: 10px;
+  border-radius: 1px;
+  font-size: 14px;
+  color: #333;
+  font-family: barlow;
+}
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  user-select: none;
+  margin-bottom: 8px;
+}
+
+.checkbox-label input[type="checkbox"] {
+  display: none;
+}
+
+.custom-checkbox {
+  position: relative;
+  width: 45px;
+  height: 45px;
+  background-color: #f5f1e9;
+  border-radius: 6px;
+  display: inline-block;
+  position: relative;
+  transition: background-color 0.2s ease;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .custom-checkbox {
+  background-color: #f7d444;
+  border-color: #333;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .custom-checkbox::after {
+  content: "✓";
+  color: black;
+  font-weight: bold;
+  font-size: 16px;
+  position: absolute; /*positon absolute acı pizza gece saat 02:41:)*/
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.ekmalzeme-h3 {
+  margin-top: 50px;
+  margin-bottom: 10px;
+  font-family: barlow;
+  font-size: 20px;
+  font-weight: 900;
+}
+.ekmalzeme-p {
+  font-family: barlow;
+  font-size: 16px;
+  font-weight: 300;
+}
+#ekmalzeme-checkbox {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px 10px;
+}
+
+@media (max-width: 600px) {
+  #ekmalzeme-checkbox {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.ekmalzeme-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px;
+  width: 85%;
+}
+
+#order-form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 580px;
+}
+.order-label-isim {
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24.76px;
+  letter-spacing: 0;
+  vertical-align: middle;
+}
+.order-label-not {
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24.76px;
+  letter-spacing: 0;
+  vertical-align: middle;
+}
+#isim {
+  border: none;
+  background-color: #faf7f2;
+  height: 56px;
+  padding-left: 20px;
+  margin: 10px 0px 10px 0;
+}
+#siparisNotu {
+  border: none;
+  background-color: #faf7f2;
+  height: 56px;
+  padding-left: 20px;
+  margin: 10px 0px 10px 0;
+  box-sizing: border-box;
+  padding: 16px 20px;
+}
+#order-button-container {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  max-width: 580px;
+  justify-content: space-between;
+}
+
+#order-arttir-button-div {
+  display: flex;
+  flex-direction: row;
+}
+.arttir-azalt-butons {
+  width: 57px;
+  height: 56px;
+  background-color: #fdc913;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+}
+#arttir-azalt-span {
+  width: 56px;
+  height: 56px;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+}
+#order-siparis-button {
+}
+#siparis-ver-button {
+  background-color: #fdc913;
+  width: 350px;
+  height: 62px;
+  border: none;
+  border-radius: 6px;
+}

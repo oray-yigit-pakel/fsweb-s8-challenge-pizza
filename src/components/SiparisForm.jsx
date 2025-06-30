@@ -6,6 +6,7 @@ import EkMalzemeler from "../miniComponents/EkMalzemeler";
 import PizzaKenar from "../miniComponents/PizzaKenar";
 import Footer from "../miniComponents/Footer";
 import SiparisVer from "../miniComponents/SiparisVer";
+import "../miniCssComponents/siparisForm.css";
 
 export default function SiparisForm() {
   /* const bosPizza = {
@@ -41,74 +42,98 @@ export default function SiparisForm() {
   }
   return (
     <>
-      <header className="orderheader">
+      <header className="order-header">
         <h1>Teknolojik Yemekler</h1>
       </header>
-      <div className="orderbanner">
-        <img src="./images/iteration-2-images/pictures/form-banner.png" />
-        <nav>
+      <main className="order-banner-container">
+        <img
+          id="order-banner-img"
+          src="./images/iteration-2-images/pictures/form-banner.png"
+        />
+        <nav id="order-nav-container">
           <NavLink exact to="/Anasayfa">
             Anasayfa
           </NavLink>
-          <a href="#secenekler">Seçenekler</a>
-          <a href="#siparis">Sipariş Oluştur</a>
+          <a href="#order-secenekler">Seçenekler</a>
+          <a href="#order-siparis">Sipariş Oluştur</a>
         </nav>
 
-        <h2>Position Absolute Acı Pizza</h2>
-        <div>
+        <h2 id="order-banner-h2">Position Absolute Acı Pizza</h2>
+        <section id="order-reklam-section">
           <p>
-            <span>85.50tl</span>
-            <span>4.9</span>
+            <span
+              style={{
+                fontFamily: "barlow",
+                fontSize: "28px",
+                marginRight: "300px",
+              }}
+            >
+              85.50tl
+            </span>
+            <span style={{ marginRight: "120px" }}>4.9</span>
             <span>(200)</span>
           </p>
-        </div>
-        <p>
+        </section>
+        <article id="order-reklam-article">
           Frontend Dev olarak hala position : absolute kullanıyorsan bu çok acı
           pizza tam sana göre. Pizza, domates, peynir ve genellikle çeşitli
           diğer malzemeler ile kaplanmış, daha sonra geleneksel olarak odun
           ateşinde bir fırında yüksek sıcaklıkta pişirilen genellikle yuvarlak,
           düzleştirilmiş mayalı buğday bazlı hamurdan oluşan İtalyan kökenli
           lezzetli bir yemektir.. Küçük bir pizzaya bazen pizzetta denir.
-        </p>
-      </div>
+        </article>
+      </main>
 
-      <div id="secenekler">
-        <div>
-          <h1>
-            Boyut Seç<span>*</span>
-          </h1>
-          <div>
-            <PizzaBoyutu onChange={handleChange} />
+      <div id="order-secenekler">
+        <form onChange={handleChange}>
+          <div id="order-boyut-section">
+            <h4 style={{marginTop:"30px"}}>
+              Boyut Seç<span style={{color: "red"}}>*</span>
+            </h4>
+            <div id="boyut-buton-div">
+              <PizzaBoyutu onChange={handleChange} />
+            </div>
           </div>
-        </div>
-        <div>
+        </form>
+        <div id="order-hamursec-div">
           <PizzaKenar onChange={handleChange} />
         </div>
       </div>
-      <div>
-        <h3>Ek malzemeler</h3>
-        <p>En fazla 10 Malzeme seçebilirsiniz. 5₺</p>
-        <div>
+      <div id="order-ekmalzemeler-container">
+        <h3 className="ekmalzeme-h3">Ek malzemeler</h3>
+        <p className="ekmalzeme-p">En fazla 10 Malzeme seçebilirsiniz. 5₺</p>
+        <div id="ekmalzeme-checkbox">
           <EkMalzemeler
             secilenler={secilenMalzemeler}
             onChange={handleChange}
           />
         </div>
       </div>
-      <form>
-        <label htmlFor="siparisNotu">Sipariş notu</label>
+      <form className="order-label-isim"id="order-form">
+        <label htmlFor="isim">İsim</label>
+        <input
+          type="text"
+          id="isim"
+          name="isim"
+          placeholder="Lütfen isminizi giriniz"
+        />
+        <label className="order-label-not"htmlFor="siparisNotu">Sipariş notu</label>
         <textarea
           id="siparisNotu"
           name="siparisNotu"
           placeholder="Siparişinize eklemek istediğiniz bir not var mı?"
         />
       </form>
-      <div>
-        <div>
-          <button onClick={azalt}>-</button>
-          <span>1</span>
-          <button onClick={arttir}>+</button>
-        </div>
+      <div id="order-button-container">
+        <div id="order-arttir-button-div">
+          <button className="arttir-azalt-butons" onClick={azalt}>
+            -
+          </button>
+          <span id="arttir-azalt-span">1</span>
+          <button className="arttir-azalt-butons" onClick={arttir}>
+            +
+          </button>
+        </div >
         <SiparisVer onSubmit={handleSubmit} />
       </div>
       <Footer />

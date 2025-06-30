@@ -1,22 +1,28 @@
 import React from "react";
+import "../miniCssComponents/pizzaBoyutu.css";
+
 export default function PizzaBoyutu({ value, onChange }) {
-  const boyutlar = ["Küçük", "Orta", "Büyük"];
+  const boyutlar = ["S", "M", "L"];
 
   return (
-    <div>
+    <div className="radio-group">
       {boyutlar.map((boyut, index) => (
-        <label key={index} htmlFor={`boyut-${index}`}>
+        <label
+          key={index}
+          className={`custom-radio ${value === boyut ? "selected" : ""}`}
+        >
           <input
             type="radio"
-            id={`boyut-${index}`}
             name="pizza-boyutu"
             value={boyut}
             checked={value === boyut}
             onChange={onChange}
           />
-          {boyut}
+          <span className="radio-label">{boyut}</span>
         </label>
       ))}
     </div>
   );
 }
+
+//bu tarz durumlarda htmlFora gerek yok çümkü input zaten labelın içinde

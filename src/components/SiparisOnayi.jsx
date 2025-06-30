@@ -24,11 +24,17 @@ export default function SiparisOnayi() {
         </section>
         <section className="siparis-fiyat-container">
           <h5>Sipariş Toplamı</h5>
-          <p>
-            <span>Seçimler</span> <span>secimler fiyat</span>
+          <p style={{ paddingTop: "20px" }}>
+            <span style={{ paddingRight: "100px", fontSize: "18px" }}>
+              Seçimler
+            </span>{" "}
+            <span>fiyat</span>
           </p>
           <p>
-            <span>Toplam</span> <span>Toplam Fiyat</span>
+            <span style={{ paddingRight: "112px", fontSize: "18px" }}>
+              Toplam
+            </span>{" "}
+            <span>Fiyat</span>
           </p>
         </section>
       </header>
