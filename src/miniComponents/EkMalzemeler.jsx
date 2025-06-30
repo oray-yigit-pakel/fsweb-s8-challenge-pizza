@@ -32,6 +32,7 @@ export default function EkMalzemeler({ secilenler, onChange }) {
             value={ekstra}
             checked={secilenler.includes(ekstra)}
             onChange={onChange}
+            data-cy="malzeme-checkbox"
           />
           <span className="custom-checkbox"></span>
           {ekstra}

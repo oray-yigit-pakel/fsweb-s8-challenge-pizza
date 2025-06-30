@@ -1,5 +1,5 @@
 describe("Teknolojik Yemekler - Pizza Sipariş Formu", () => {
-  const pizzaFormPath = "/siparis";
+  const pizzaFormPath = "/siparisform";
   const baseUrl = "http://localhost:5174"; // gerektiğinde değiştir
 
   beforeEach(() => {

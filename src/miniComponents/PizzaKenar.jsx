@@ -5,14 +5,15 @@ export default function PizzaKenar({ value, onChange }) {
 
   return (
     <div>
-      <label style={{marginTop:"30px"}} htmlFor="kenartipleri">
-        Hamur Seç <span style={{color: "red"}}>*</span>
+      <label style={{ marginTop: "30px" }} htmlFor="kenartipleri">
+        Hamur Seç <span style={{ color: "red" }}>*</span>
       </label>
       <select
         id="kenartipleri"
         name="kenar"
         value={value}
         onChange={onChange}
+        data-cy="kenar-select"
       >
         <option value="">-Hamur Tipi Seçiniz</option>
         {kenarTipleri.map((tip, index) => (

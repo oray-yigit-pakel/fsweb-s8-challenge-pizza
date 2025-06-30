@@ -71,8 +71,6 @@ export default function SiparisForm() {
     }
 
     setFormErrors(errors);
-
-    // Hata yoksa true döner
     return !Object.values(errors).some((error) => error !== false);
   };
 
@@ -88,11 +86,7 @@ export default function SiparisForm() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
-    if (!validateForm()) {
-      console.log("Formda hatalar var");
-      return;
-    }
+    if (!validateForm()) return;
 
     const baseFiyat = 85.5;
     const ekstraMalzemeFiyati = pizza.ekstraMalzemeler.length * 5;
@@ -110,27 +104,17 @@ export default function SiparisForm() {
     };
 
     try {
-      const response = await axios.post(
-        "https://reqres.in/api/pizza",
-        siparisVerisi,
-        {
-          headers: {
-            "x-api-key": "reqres-free-v1",
-          },
-        }
-      );
-
-      console.log("API'den gelen yanıt:", response.data);
+      const response = await axios.post("https://reqres.in/api/pizza", siparisVerisi, {
+        headers: { "x-api-key": "reqres-free-v1" },
+      });
       history.push("/siparisonayi", { siparis: siparisVerisi });
     } catch (error) {
-      console.error("API isteğinde hata oluştu:", error);
       alert("Sipariş gönderilemedi, lütfen tekrar deneyin.");
     }
   }
 
   function handleChange(event) {
     const { name, value, type, checked } = event.target;
-
     if (type === "checkbox" && name === "ekstraMalzemeler") {
       setPizza((prev) => ({
         ...prev,
@@ -147,95 +131,63 @@ export default function SiparisForm() {
     hesaplaFiyat();
   }, [pizza.adet, pizza.ekstraMalzemeler]);
 
-  const secilenMalzemeler =
-    pizza.ekstraMalzemeler.length > 0
-      ? pizza.ekstraMalzemeler.join(", ")
-      : "Ek malzeme seçilmedi";
+  const secilenMalzemeler = pizza.ekstraMalzemeler.join(", ") || "Ek malzeme seçilmedi";
 
   return (
     <>
       <header className="order-header">
-        <h1>Teknolojik Yemekler</h1>
+        <h1 data-cy="site-basligi">Teknolojik Yemekler</h1>
       </header>
+
       <main className="order-banner-container">
-        <img
-          id="order-banner-img"
-          src="./images/iteration-2-images/pictures/form-banner.png"
-          alt="Pizza Banner"
-        />
+        <img id="order-banner-img" src="./images/iteration-2-images/pictures/form-banner.png" alt="Pizza Banner" data-cy="banner-img" />
         <nav id="order-nav-container">
-          <NavLink exact to="/Anasayfa">
-            Anasayfa
-          </NavLink>
-          <a href="#order-secenekler">Seçenekler</a>
-          <a href="#order-siparis">Sipariş Oluştur</a>
+          <NavLink exact to="/Anasayfa" data-cy="nav-link">Anasayfa</NavLink>
+          <a href="#order-secenekler" data-cy="nav-link">Seçenekler</a>
+          <a href="#order-siparis" data-cy="nav-link">Sipariş Oluştur</a>
         </nav>
 
         <h2 id="order-banner-h2">Position Absolute Acı Pizza</h2>
         <section id="order-reklam-section">
           <p>
-            <span
-              style={{
-                fontFamily: "barlow",
-                fontSize: "28px",
-                marginRight: "300px",
-              }}
-            >
-              85.50tl
-            </span>
+            <span style={{ fontFamily: "barlow", fontSize: "28px", marginRight: "300px" }}>85.50tl</span>
             <span style={{ marginRight: "120px" }}>4.9</span>
             <span>(200)</span>
           </p>
         </section>
+
         <article id="order-reklam-article">
-          Frontend Dev olarak hala position : absolute kullanıyorsan bu çok acı
-          pizza tam sana göre. Pizza, domates, peynir ve genellikle çeşitli
-          diğer malzemeler ile kaplanmış, daha sonra geleneksel olarak odun
-          ateşinde bir fırında yüksek sıcaklıkta pişirilen genellikle yuvarlak,
-          düzleştirilmiş mayalı buğday bazlı hamurdan oluşan İtalyan kökenli
-          lezzetli bir yemektir.. Küçük bir pizzaya bazen pizzetta denir.
+          Frontend Dev olarak hala position : absolute kullanıyorsan bu çok acı pizza tam sana göre.
         </article>
       </main>
 
       <div id="order-secenekler">
         <div id="order-boyut-section">
-          <h4 style={{ marginTop: "30px" }}>
-            Boyut Seç<span style={{ color: "red" }}>*</span>
-          </h4>
-          <div id="boyut-buton-div">
+          <h4 style={{ marginTop: "30px" }}>Boyut Seç<span style={{ color: "red" }}>*</span></h4>
+          <div id="boyut-buton-div" data-cy="boyut-secimi">
             <PizzaBoyutu value={pizza.boyut} onChange={handleChange} />
           </div>
-          {formErrors.boyut && (
-            <p style={{ color: "red", fontSize: "14px" }}>{formErrors.boyut}</p>
-          )}
+          {formErrors.boyut && <p data-cy="boyut-hata" style={{ color: "red" }}>{formErrors.boyut}</p>}
         </div>
+
         <div id="order-hamursec-div">
           <PizzaKenar value={pizza.kenar} onChange={handleChange} />
-          {formErrors.kenar && (
-            <p style={{ color: "red", fontSize: "14px" }}>{formErrors.kenar}</p>
-          )}
+          {formErrors.kenar && <p data-cy="kenar-hata" style={{ color: "red" }}>{formErrors.kenar}</p>}
         </div>
       </div>
+
       <div id="order-ekmalzemeler-container">
         <h3 className="ekmalzeme-h3">Ek malzemeler</h3>
         <p className="ekmalzeme-p">En fazla 10 Malzeme seçebilirsiniz. 5₺</p>
         <div id="ekmalzeme-checkbox">
-          <EkMalzemeler
-            secilenler={pizza.ekstraMalzemeler}
-            onChange={handleChange}
-          />
+          <EkMalzemeler secilenler={pizza.ekstraMalzemeler} onChange={handleChange} />
         </div>
         {formErrors.ekstraMalzemeler && (
-          <p style={{ color: "red", fontSize: "14px" }}>
-            {formErrors.ekstraMalzemeler}
-          </p>
+          <p data-cy="malzeme-hata" style={{ color: "red" }}>{formErrors.ekstraMalzemeler}</p>
         )}
       </div>
-      <form
-        className="order-label-isim"
-        id="order-form"
-        onSubmit={handleSubmit}
-      >
+
+      <form className="order-label-isim" id="order-form" onSubmit={handleSubmit}>
         <label htmlFor="isim">İsim</label>
         <input
           onChange={handleChange}
@@ -244,40 +196,28 @@ export default function SiparisForm() {
           name="isim"
           value={pizza.isim}
           placeholder="Lütfen isminizi giriniz"
+          data-cy="isim-input"
         />
-        {formErrors.isim && (
-          <p style={{ color: "red", fontSize: "14px" }}>{formErrors.isim}</p>
-        )}
-        <label className="order-label-not" htmlFor="siparisNotu">
-          Sipariş notu
-        </label>
+        {formErrors.isim && <p data-cy="isim-hata" style={{ color: "red" }}>{formErrors.isim}</p>}
+
+        <label className="order-label-not" htmlFor="siparisNotu">Sipariş notu</label>
         <textarea
           id="siparisNotu"
           name="siparisNotu"
           value={pizza.siparisNotu}
           onChange={handleChange}
           placeholder="Siparişinize eklemek istediğiniz bir not var mı?"
+          data-cy="not-input"
         />
       </form>
+
       <div id="order-button-container">
         <div id="order-arttir-button-div">
-          <button
-            type="button"
-            id="order-siparis"
-            className="arttir-azalt-butons"
-            onClick={azalt}
-          >
-            -
-          </button>
-          <span id="arttir-azalt-span">{pizza.adet}</span>
-          <button
-            type="button"
-            className="arttir-azalt-butons"
-            onClick={arttir}
-          >
-            +
-          </button>
+          <button type="button" className="arttir-azalt-butons" onClick={azalt} data-cy="azalt-button">-</button>
+          <span id="arttir-azalt-span" data-cy="adet-span">{pizza.adet}</span>
+          <button type="button" className="arttir-azalt-butons" onClick={arttir} data-cy="arttir-button">+</button>
         </div>
+
         <SiparisVer
           onSubmit={handleSubmit}
           toplam={fiyat.toFixed(2)}

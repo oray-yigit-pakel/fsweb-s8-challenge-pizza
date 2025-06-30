@@ -17,6 +17,7 @@ export default function PizzaBoyutu({ value, onChange }) {
             value={boyut}
             checked={value === boyut}
             onChange={onChange}
+            data-cy="boyut-radio"
           />
           <span className="radio-label">{boyut}</span>
         </label>
