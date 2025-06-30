@@ -38,7 +38,7 @@ export default function SiparisOnayi() {
           </p>
         </section>
       </header>
-      <Footer />
+      
     </>
   );
 }

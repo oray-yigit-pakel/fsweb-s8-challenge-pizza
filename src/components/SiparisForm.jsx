@@ -136,7 +136,7 @@ export default function SiparisForm() {
         </div >
         <SiparisVer onSubmit={handleSubmit} />
       </div>
-      <Footer />
+      
     </>
   );
 }

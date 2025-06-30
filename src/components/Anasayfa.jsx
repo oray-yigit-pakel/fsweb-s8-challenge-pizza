@@ -120,7 +120,7 @@ export default function Anasayfa() {
           </p>
         </div>
       </aside>
-      <Footer />
+      
     </>
   );
 }
