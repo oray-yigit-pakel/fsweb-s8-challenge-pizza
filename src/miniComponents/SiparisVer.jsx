@@ -1,5 +1,6 @@
 import React from "react";
-export default function SiparisVer({ onSubmit }) {
+
+export default function SiparisVer({ onSubmit, toplam, secilenler }) {
   return (
     <div style={{ border: "1px solid black", marginBottom: "120px" }}>
       <div>
@@ -8,11 +9,11 @@ export default function SiparisVer({ onSubmit }) {
         </h5>
         <p style={{ paddingLeft: "30px", paddingTop: "10px" }}>
           <span style={{ paddingRight: "100px" }}>Seçimler</span>{" "}
-          <span>secimler fiyat</span>
+          <span>{secilenler}</span>
         </p>
         <p style={{ paddingLeft: "30px" }}>
           <span style={{ color: "red", paddingRight: "107px" }}>Toplam</span>{" "}
-          <span>Toplam Fiyat</span>
+          <span>{toplam}₺</span>
         </p>
       </div>
       <button id="siparis-ver-button" onClick={onSubmit}>

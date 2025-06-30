@@ -13,7 +13,7 @@ export default function PizzaBoyutu({ value, onChange }) {
         >
           <input
             type="radio"
-            name="pizza-boyutu"
+            name="boyut"
             value={boyut}
             checked={value === boyut}
             onChange={onChange}
@@ -24,5 +24,4 @@ export default function PizzaBoyutu({ value, onChange }) {
     </div>
   );
 }
-
 //bu tarz durumlarda htmlFora gerek yok çümkü input zaten labelın içinde

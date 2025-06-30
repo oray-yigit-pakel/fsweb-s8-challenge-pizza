@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { NavLink, useHistory } from "react-router-dom";
 import React from "react";
 import PizzaBoyutu from "../miniComponents/PizzaBoyutu";
 import EkMalzemeler from "../miniComponents/EkMalzemeler";
@@ -7,39 +7,146 @@ import PizzaKenar from "../miniComponents/PizzaKenar";
 import Footer from "../miniComponents/Footer";
 import SiparisVer from "../miniComponents/SiparisVer";
 import "../miniCssComponents/siparisForm.css";
+import axios from "axios";
 
 export default function SiparisForm() {
-  /* const bosPizza = {
-    adet: 0,
+  const history = useHistory();
+
+  const bosPizza = {
+    adet: 1,
     boyut: "",
     ekstraMalzemeler: [],
     kenar: "",
+    isim: "",
+    siparisNotu: "",
   };
+
+  const initialErrors = {
+    isim: false,
+    boyut: false,
+    kenar: false,
+    ekstraMalzemeler: false,
+  };
+
   const [pizza, setPizza] = useState(bosPizza);
-  const [fiyat, setFiyat] = useState(0);
-*/
-  const secilenMalzemeler = [
-    "Soğan",
-    "Domates",
-    "Mısır",
-    "Jalapeno",
-    "Sarımsak",
-    "Biber",
-    "Sucuk",
-  ];
+  const [fiyat, setFiyat] = useState(85.5);
+  const [formErrors, setFormErrors] = useState(initialErrors);
+
+  const hesaplaFiyat = () => {
+    let baseFiyat = 85.5;
+    let ekstraMalzemeFiyat = pizza.ekstraMalzemeler.length * 5;
+    let toplamFiyat = (baseFiyat + ekstraMalzemeFiyat) * pizza.adet;
+    setFiyat(toplamFiyat);
+    return toplamFiyat;
+  };
+
+  const isNameValid = (value) => {
+    return value.trim().length >= 3;
+  };
+
+  const validateForm = () => {
+    const errors = {
+      isim: false,
+      boyut: false,
+      kenar: false,
+      ekstraMalzemeler: false,
+    };
+
+    if (!isNameValid(pizza.isim)) {
+      errors.isim = "İsim en az 3 karakter olmalıdır";
+    }
+
+    if (!pizza.boyut) {
+      errors.boyut = "Lütfen pizza boyutu seçiniz";
+    }
+
+    if (!pizza.kenar) {
+      errors.kenar = "Lütfen hamur tipi seçiniz";
+    }
+
+    if (pizza.ekstraMalzemeler.length < 4) {
+      errors.ekstraMalzemeler = "En az 4 malzeme seçiniz";
+    } else if (pizza.ekstraMalzemeler.length > 10) {
+      errors.ekstraMalzemeler = "En fazla 10 malzeme seçebilirsiniz";
+    }
+
+    setFormErrors(errors);
+
+    // Hata yoksa true döner
+    return !Object.values(errors).some((error) => error !== false);
+  };
+
   function azalt() {
-    console.log("merhaba");
+    if (pizza.adet > 1) {
+      setPizza((prev) => ({ ...prev, adet: prev.adet - 1 }));
+    }
   }
+
   function arttir() {
-    console.log("merhaba");
+    setPizza((prev) => ({ ...prev, adet: prev.adet + 1 }));
   }
-  function handleSubmit(e) {
+
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log("merhaba");
+    if (!validateForm()) {
+      console.log("Formda hatalar var");
+      return;
+    }
+
+    const siparisVerisi = {
+      isim: pizza.isim,
+      boyut: pizza.boyut,
+      kenar: pizza.kenar,
+      ekstraMalzemeler: pizza.ekstraMalzemeler,
+      adet: pizza.adet,
+      siparisNotu: pizza.siparisNotu,
+      toplamFiyat: fiyat.toFixed(2),
+    };
+
+    try {
+      const response = await axios.post(
+        "https://reqres.in/api/pizza",
+        siparisVerisi,
+        {
+          headers: {
+            "x-api-key": "reqres-free-v1",
+          },
+        }
+      );
+
+      console.log("API'den gelen yanıt:", response.data);
+      history.push("/siparisonayi");
+      alert("Siparişiniz başarıyla alındı!");
+    } catch (error) {
+      console.error("API isteğinde hata oluştu:", error);
+      alert("Sipariş gönderilemedi, lütfen tekrar deneyin.");
+    }
   }
-  function handleChange() {
-    console.log("merhaba");
+
+  function handleChange(event) {
+    const { name, value, type, checked } = event.target;
+
+    if (type === "checkbox" && name === "ekstraMalzemeler") {
+      setPizza((prev) => ({
+        ...prev,
+        ekstraMalzemeler: checked
+          ? [...prev.ekstraMalzemeler, value]
+          : prev.ekstraMalzemeler.filter((item) => item !== value),
+      }));
+    } else {
+      setPizza((prev) => ({ ...prev, [name]: value }));
+    }
   }
+
+  useEffect(() => {
+    hesaplaFiyat();
+  }, [pizza.adet, pizza.ekstraMalzemeler]);
+
+  const secilenMalzemeler =
+    pizza.ekstraMalzemeler.length > 0
+      ? pizza.ekstraMalzemeler.join(", ")
+      : "Ek malzeme seçilmedi";
+
   return (
     <>
       <header className="order-header">
@@ -49,6 +156,7 @@ export default function SiparisForm() {
         <img
           id="order-banner-img"
           src="./images/iteration-2-images/pictures/form-banner.png"
+          alt="Pizza Banner"
         />
         <nav id="order-nav-container">
           <NavLink exact to="/Anasayfa">
@@ -85,18 +193,22 @@ export default function SiparisForm() {
       </main>
 
       <div id="order-secenekler">
-        <form onChange={handleChange}>
-          <div id="order-boyut-section">
-            <h4 style={{marginTop:"30px"}}>
-              Boyut Seç<span style={{color: "red"}}>*</span>
-            </h4>
-            <div id="boyut-buton-div">
-              <PizzaBoyutu onChange={handleChange} />
-            </div>
+        <div id="order-boyut-section">
+          <h4 style={{ marginTop: "30px" }}>
+            Boyut Seç<span style={{ color: "red" }}>*</span>
+          </h4>
+          <div id="boyut-buton-div">
+            <PizzaBoyutu value={pizza.boyut} onChange={handleChange} />
           </div>
-        </form>
+          {formErrors.boyut && (
+            <p style={{ color: "red", fontSize: "14px" }}>{formErrors.boyut}</p>
+          )}
+        </div>
         <div id="order-hamursec-div">
-          <PizzaKenar onChange={handleChange} />
+          <PizzaKenar value={pizza.kenar} onChange={handleChange} />
+          {formErrors.kenar && (
+            <p style={{ color: "red", fontSize: "14px" }}>{formErrors.kenar}</p>
+          )}
         </div>
       </div>
       <div id="order-ekmalzemeler-container">
@@ -104,39 +216,69 @@ export default function SiparisForm() {
         <p className="ekmalzeme-p">En fazla 10 Malzeme seçebilirsiniz. 5₺</p>
         <div id="ekmalzeme-checkbox">
           <EkMalzemeler
-            secilenler={secilenMalzemeler}
+            secilenler={pizza.ekstraMalzemeler}
             onChange={handleChange}
           />
         </div>
+        {formErrors.ekstraMalzemeler && (
+          <p style={{ color: "red", fontSize: "14px" }}>
+            {formErrors.ekstraMalzemeler}
+          </p>
+        )}
       </div>
-      <form className="order-label-isim"id="order-form">
+      <form
+        className="order-label-isim"
+        id="order-form"
+        onSubmit={handleSubmit}
+      >
         <label htmlFor="isim">İsim</label>
         <input
+          onChange={handleChange}
           type="text"
           id="isim"
           name="isim"
+          value={pizza.isim}
           placeholder="Lütfen isminizi giriniz"
         />
-        <label className="order-label-not"htmlFor="siparisNotu">Sipariş notu</label>
+        {formErrors.isim && (
+          <p style={{ color: "red", fontSize: "14px" }}>{formErrors.isim}</p>
+        )}
+        <label className="order-label-not" htmlFor="siparisNotu">
+          Sipariş notu
+        </label>
         <textarea
           id="siparisNotu"
           name="siparisNotu"
+          value={pizza.siparisNotu}
+          onChange={handleChange}
           placeholder="Siparişinize eklemek istediğiniz bir not var mı?"
         />
       </form>
       <div id="order-button-container">
         <div id="order-arttir-button-div">
-          <button className="arttir-azalt-butons" onClick={azalt}>
+          <button
+            type="button"
+            id="order-siparis"
+            className="arttir-azalt-butons"
+            onClick={azalt}
+          >
             -
           </button>
-          <span id="arttir-azalt-span">1</span>
-          <button className="arttir-azalt-butons" onClick={arttir}>
+          <span id="arttir-azalt-span">{pizza.adet}</span>
+          <button
+            type="button"
+            className="arttir-azalt-butons"
+            onClick={arttir}
+          >
             +
           </button>
-        </div >
-        <SiparisVer onSubmit={handleSubmit} />
+        </div>
+        <SiparisVer
+          onSubmit={handleSubmit}
+          toplam={fiyat.toFixed(2)}
+          secilenler={secilenMalzemeler}
+        />
       </div>
-      
     </>
   );
 }

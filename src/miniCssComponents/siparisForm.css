@@ -253,7 +253,7 @@
   display: flex;
   flex-direction: row;
   margin: 0 auto;
-  max-width: 580px;
+  width: 580px;
   justify-content: space-between;
 }
 

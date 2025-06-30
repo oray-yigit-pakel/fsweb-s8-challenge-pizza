@@ -1,4 +1,5 @@
 import React from "react";
+
 export default function EkMalzemeler({ secilenler, onChange }) {
   const ekstralar = [
     "Pepperoni",
@@ -27,7 +28,7 @@ export default function EkMalzemeler({ secilenler, onChange }) {
           <input
             id={`ekstra-${index}`}
             type="checkbox"
-            name="ekstra-malzemeler"
+            name="ekstraMalzemeler"
             value={ekstra}
             checked={secilenler.includes(ekstra)}
             onChange={onChange}

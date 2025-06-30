@@ -1,5 +1,6 @@
 import React from "react";
-export default function PizzaKenar({ onChange }) {
+
+export default function PizzaKenar({ value, onChange }) {
   const kenarTipleri = ["Kalın", "İnce", "Nefis Kenar"];
 
   return (
@@ -9,7 +10,8 @@ export default function PizzaKenar({ onChange }) {
       </label>
       <select
         id="kenartipleri"
-        name="kenarTipi"
+        name="kenar"
+        value={value}
         onChange={onChange}
       >
         <option value="">-Hamur Tipi Seçiniz</option>
