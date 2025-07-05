@@ -3,9 +3,9 @@ import { Switch, Route } from "react-router-dom";
 import Anasayfa from "./components/Anasayfa.jsx";
 import SiparisOnayi from "./components/SiparisOnayi.jsx";
 import Footer from "./miniComponents/Footer.jsx";
-import SiparisVer from "./miniComponents/SiparisVer.jsx";
+
 import SiparisForm from "./components/SiparisForm.jsx";
-import NavigationMenu from "./miniComponents/navigationMenu.jsx";
+
 import BackToTop from "./scrollToTop.jsx";
 
 function App() {

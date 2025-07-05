@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import NavigationMenu from "../miniComponents/navigationMenu";
 import "../App.css";
 import StatikButtons from "../miniComponents/StatikButtons";
-import Footer from "../miniComponents/Footer";
+
 import "../miniCssComponents/footer.css";
 import { useHistory } from "react-router-dom";
 

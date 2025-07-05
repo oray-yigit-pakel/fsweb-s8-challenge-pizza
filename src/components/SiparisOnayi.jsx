@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import Footer from "../miniComponents/Footer";
+
 import "../miniCssComponents/siparisOnayi.css";
 
 export default function SiparisOnayi() {
